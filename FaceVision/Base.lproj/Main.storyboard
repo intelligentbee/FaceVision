@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FaceVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-Yb-FPY">
+                                <rect key="frame" x="149" y="318" width="76" height="30"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TbO-PP-eoj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bK2-Yb-FPY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Hs-6C-2ti"/>
+                            <constraint firstItem="bK2-Yb-FPY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cO4-dE-k7t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="takePhotoButton" destination="bK2-Yb-FPY" id="fOs-8O-R76"/>
+                        <segue destination="5mt-CK-KdS" kind="presentation" identifier="showImageSegue" id="Wea-lo-ESI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="kHS-TB-aDF">
+            <objects>
+                <viewController id="5mt-CK-KdS" customClass="ImageViewController" customModule="FaceVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UpD-aj-jI8"/>
+                        <viewControllerLayoutGuide type="bottom" id="sp2-vT-Cdg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RbN-uO-qII">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IWz-g9-fZO">
+                                <rect key="frame" x="16" y="20" width="343" height="589"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVm-zj-600">
+                                <rect key="frame" x="299" y="617" width="60" height="30"/>
+                                <state key="normal" title="Process!"/>
+                                <connections>
+                                    <action selector="process:" destination="5mt-CK-KdS" eventType="touchUpInside" id="szj-zV-dZb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uY7-T7-yCx">
+                                <rect key="frame" x="16" y="617" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <segue destination="qZO-xp-E9E" kind="unwind" unwindAction="exitWithUnwindSegue:" id="ZuX-KM-jMt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uY7-T7-yCx" firstAttribute="leading" secondItem="RbN-uO-qII" secondAttribute="leadingMargin" id="LPP-od-Xrl"/>
+                            <constraint firstItem="IWz-g9-fZO" firstAttribute="trailing" secondItem="RbN-uO-qII" secondAttribute="trailingMargin" id="Ohz-8e-nCg"/>
+                            <constraint firstItem="IWz-g9-fZO" firstAttribute="leading" secondItem="RbN-uO-qII" secondAttribute="leadingMargin" id="Q4D-Vw-3Y7"/>
+                            <constraint firstItem="sp2-vT-Cdg" firstAttribute="top" secondItem="uY7-T7-yCx" secondAttribute="bottom" constant="20" id="RBe-mh-f7d"/>
+                            <constraint firstItem="xVm-zj-600" firstAttribute="top" secondItem="IWz-g9-fZO" secondAttribute="bottom" constant="8" id="WhS-8M-bAW"/>
+                            <constraint firstItem="sp2-vT-Cdg" firstAttribute="top" secondItem="xVm-zj-600" secondAttribute="bottom" constant="20" id="XSL-eJ-pNZ"/>
+                            <constraint firstItem="IWz-g9-fZO" firstAttribute="top" secondItem="UpD-aj-jI8" secondAttribute="bottom" id="YjJ-Dv-fdj"/>
+                            <constraint firstItem="xVm-zj-600" firstAttribute="trailing" secondItem="RbN-uO-qII" secondAttribute="trailingMargin" id="Zy8-sn-sA1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="IWz-g9-fZO" id="5A4-Rm-5Sy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8k9-x4-6to" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qZO-xp-E9E" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="103"/>
+        </scene>
+    </scenes>
+</document>
